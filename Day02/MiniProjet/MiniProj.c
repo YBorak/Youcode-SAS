@@ -3,30 +3,25 @@
 #include <string.h>
 //#define Max 100
 
-//int i;
-//int Conteur = 0;
-//int livreConteur = 0;
+int i;
+int n;
+livres TG[100];
+int compt=0;
+
 
 typedef struct {
+    int id;
     char titre[20]; 
     char auteur[20];
     float prix;
     int quantite;
-} livre;
+} livres;
 
 void Ajoutlivre();
-//void Affichagelivre();
+void Affichagelivre();
 //void Updatelivre();
-//void Suppressionlivre();
+void Suppressionlivre();
 //void AffichageStock();
-
-
-livre TG[100];
-int i=0;
-
-livre TA[100];
-int iA;
-
 
 int main(){
 
@@ -34,70 +29,101 @@ int main(){
 
     do {
 
-        printf("Menu de Gestion de Stock dans une Librairie\n");
+        printf("\nMenu de Gestion de Stock dans une Librairie\n");
         printf("1.Ajouter un Livre au Stock\n");
         printf("2.Afficher Tous les Livres Disponibles\n");
-        printf("3.Mettre à Jour la Quantite d'un Livre\n");
+        printf("3.Mettre a Jour la Quantite d'un Livre\n");
         printf("4.Supprimer un Livre du Stock\n");
         printf("5.Afficher le Nombre Total de Livres en Stock\n");
 
         printf("Entrer votre choix: ");
         scanf("%d", &choix);
 
-    } while (choix <0 && choix >6);
-
-    switch(choix){
+        switch(choix){
 
         case 1: Ajoutlivre(); break;
-        //case 2: Affichagelivre(); break;
+        case 2: Affichagelivre(); break;
         //case 3: Updatelivre(); break;
-        //case 4: Suppressionlivre(); break;
+        case 4: Suppressionlivre(); break;
         //case 5: AffichageStock(); break;
         default:
             printf("Error resayer a nouveau"); 
     }
+
+    } while (choix >0 && choix <6);
 
     return 0;
 }
 
 void Ajoutlivre(){
 
-    livre liv;
+    livres livre;
+
+    printf("Entrer le ID de livre: ");
+    scanf("%d", &livre.id);
 
     printf("Entrer le titre de livre: ");
-    scanf("%s", &liv.titre);
+    scanf("%s", livre.titre);
 
     printf("Entrer lauteur de livre: ");
-    scanf("%s", &liv.auteur);
+    scanf("%s", livre.auteur);
     
     printf("Entrer combien de livre vous voulez ajouter: ");
-    scanf("%f", &liv.quantite);
+    scanf("%d", &livre.quantite);
 
     printf("Entrer le prix de livre: ");
-    scanf("%d", &liv.prix);
+    scanf("%f", &livre.prix);
 
-    TG[i++] = liv;
+    TG[compt++] = livre;
+
+    printf("\nle livre a ete ajoute avec sucsess\n");
+    printf("\n");
+}
+
+
+void Affichagelivre(){
+
+    printf("\nEntrer le nombre de livre que vous voulez afficher: ");
+    scanf("%d", &n);
+    printf("\n");
+
+    for(i=0;i<n;i++){
+    printf("ID: %d, Titre: %s, Auteur: %s, Prix: %.2f, Quantite: %d ", TG[i].id, TG[i].titre, TG[i].auteur, TG[i].prix, TG[i].quantite);
+    printf("\n");
+    }
+    printf("\nvous avez affichez %d livres\n", n);
+    printf("\n");
 }
 
 /*
-void Affichagelivre(){
-
-
-    printf("voici le prix de ce produit  :%f\n", TA[0].prix);
-    printf("voi D' %d:%d\n", );
-
-}
-
-
 void Updatelivre(){
 
 }
-
+*/
 void Suppressionlivre(){
 
+    int choixid, trouve=0;
+
+    printf("\nEntrer le id de livre que vous voulez supprimer: ");
+    scanf("%d", &choixid);
+
+        for(i=0;i<compt+1;i++){
+            if(TG[i].id == choixid){
+            for(int j=i;j<compt;j++){
+                TG[j] = TG[j+1];
+                }
+                compt--;
+        }
+    }
+
+    printf("le livre a ete supprime avec sucsess\n");
 }
 
+/*
 void AffichageStock(){
 
 }
 */
+
+
+    
