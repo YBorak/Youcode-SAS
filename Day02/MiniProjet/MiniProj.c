@@ -2,12 +2,6 @@
 #include <stdlib.h>
 #include <string.h>
 
-int i;
-int n;
-livres TG[100];
-int compt=0;
-
-
 typedef struct {
     int id;
     char titre[20]; 
@@ -16,11 +10,16 @@ typedef struct {
     int quantite;
 } livres;
 
+int i;
+int n;
+livres TG[100];
+int compt=0;
+
 void Ajoutlivre();
 void Affichagelivre();
 //void Updatelivre();
 void Suppressionlivre();
-//void AffichageStock();
+void AffichageStock();
 
 int main(){
 
@@ -44,9 +43,9 @@ int main(){
         case 2: Affichagelivre(); break;
         //case 3: Updatelivre(); break;
         case 4: Suppressionlivre(); break;
-        //case 5: AffichageStock(); break;
+        case 5: AffichageStock(); break;
         default:
-            printf("Error resayer a nouveau"); 
+            printf("Error resayer a nouveau."); 
     }
 
     } while (choix >0 && choix <6);
@@ -75,7 +74,7 @@ void Ajoutlivre(){
 
     TG[compt++] = livre;
 
-    printf("\nle livre a ete ajoute avec sucsess\n");
+    printf("\nle livre a ete ajoute avec sucsess.\n");
     printf("\n");
 }
 
@@ -90,7 +89,7 @@ void Affichagelivre(){
     printf("ID: %d, Titre: %s, Auteur: %s, Prix: %.2f, Quantite: %d ", TG[i].id, TG[i].titre, TG[i].auteur, TG[i].prix, TG[i].quantite);
     printf("\n");
     }
-    printf("\nvous avez affichez %d livres\n", n);
+    printf("\nvous avez affichez %d livres.\n", n);
     printf("\n");
 }
 
@@ -115,14 +114,22 @@ void Suppressionlivre(){
         }
     }
 
-    printf("le livre a ete supprime avec sucsess\n");
+    printf("le livre a ete supprime avec sucsess.\n");
 }
 
-/*
+
 void AffichageStock(){
 
+    int stock=0;
+
+    for(i=0;i<compt;i++){
+        stock+=TG[i].quantite;
+    }
+    printf("la quantite total de livre qui en biblio est: %d livres.",stock);
+    printf("\n");
+
 }
-*/
+
 
 
     
