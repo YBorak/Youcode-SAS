@@ -17,7 +17,7 @@ int compt=0;        //Compteur
 
 void Ajoutlivre();
 void Affichagelivre();
-//void Updatelivre();
+void Updatelivre();
 void Suppressionlivre();
 void AffichageStock();
 
@@ -41,7 +41,7 @@ int main(){
 
         case 1: Ajoutlivre(); break;
         case 2: Affichagelivre(); break;
-        //case 3: Updatelivre(); break;
+        case 3: Updatelivre(); break;
         case 4: Suppressionlivre(); break;
         case 5: AffichageStock(); break;
         default:
@@ -97,11 +97,30 @@ void Affichagelivre(){
     printf("\n");
 }
 
-/*
 void Updatelivre(){
 
+    int rajoute=0, trouve=0;
+    char choixtitre[20];
+
+    printf("\nEntrer le titre de livre que vous voulez mettre a jour: ");
+    scanf("%s", choixtitre);
+    printf("\n");
+
+    for(i=0;i<compt+1;i++){
+        if(strcmp(choixtitre, TG[i].titre)==0){
+            trouve=1;
+            printf("\nEntrer combien de livre vous voulez ajouter au stock: ");
+            scanf("%d", &rajoute);
+            TG[i].quantite+=rajoute;
+        }
+    }
+    if(trouve){
+        printf("\nla mettre a jour du stock a ete effectue avec sucsess.\n");
+    } else {
+        printf("\nle livre n'a pas ete trouve.\n");
+    }
 }
-*/
+
 void Suppressionlivre(){
 
     int choixid, trouve=0;
