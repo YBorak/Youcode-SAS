@@ -56,9 +56,12 @@ int main(){
 void Ajoutlivre(){
 
     livres livre;
+    livre.id=0;
 
-    printf("Entrer le ID de livre: ");
-    scanf("%d", &livre.id);
+    for(i=0;i<compt+1;i++){
+        ++livre.id;
+    }
+    //scanf("%d", &livre.id);
 
     printf("Entrer le titre de livre: ");
     scanf("%s", livre.titre);
@@ -73,6 +76,7 @@ void Ajoutlivre(){
     scanf("%f", &livre.prix);
 
     TG[compt++] = livre;
+    
 
     printf("\nle livre a ete ajoute avec sucsess.\n");
     printf("\n");
@@ -115,6 +119,8 @@ void Suppressionlivre(){
     }
 
     printf("le livre a ete supprime avec sucsess.\n");
+    printf("\n");
+    
 }
 
 
