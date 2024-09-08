@@ -128,6 +128,7 @@ void AffichageStock(){
     printf("la quantite total de livre qui en biblio est: %d livres.",stock);
     printf("\n");
 
+
 }
 
 
