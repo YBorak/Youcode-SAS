@@ -12,8 +12,8 @@ typedef struct {
 
 int i;
 int n;
-livres TG[100];
-int compt=0;
+livres TG[100];     //TABLEAU GENERAL
+int compt=0;        //Compteur
 
 void Ajoutlivre();
 void Affichagelivre();
@@ -59,7 +59,7 @@ void Ajoutlivre(){
     livre.id=0;
 
     for(i=0;i<compt+1;i++){
-        ++livre.id;
+        livre.id++;
     }
     //scanf("%d", &livre.id);
 
@@ -108,18 +108,27 @@ void Suppressionlivre(){
 
     printf("\nEntrer le id de livre que vous voulez supprimer: ");
     scanf("%d", &choixid);
+    printf("\n");
 
         for(i=0;i<compt+1;i++){
             if(TG[i].id == choixid){
+                trouve=1;
             for(int j=i;j<compt;j++){
                 TG[j] = TG[j+1];
                 }
                 compt--;
         }
     }
+        for(i=compt+1;i>=0;i--){
+            TG[i].id--;
+        }
 
+    if(trouve){
     printf("le livre a ete supprime avec sucsess.\n");
     printf("\n");
+    } else {
+        printf("le livre n'a pas ete trouve.\n");
+    }
     
 }
 
@@ -133,7 +142,6 @@ void AffichageStock(){
     }
     printf("la quantite total de livre qui en biblio est: %d livres.",stock);
     printf("\n");
-
 
 }
 
