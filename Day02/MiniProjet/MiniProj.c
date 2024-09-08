@@ -109,7 +109,7 @@ void Updatelivre(){
     for(i=0;i<compt+1;i++){
         if(strcmp(choixtitre, TG[i].titre)==0){
             trouve=1;
-            printf("\nEntrer combien de livre vous voulez ajouter au stock: ");
+            printf("\nEntrer combien de livre vous voulez rajouter au stock: ");
             scanf("%d", &rajoute);
             TG[i].quantite+=rajoute;
         }
@@ -136,11 +136,13 @@ void Suppressionlivre(){
                 TG[j] = TG[j+1];
                 }
                 compt--;
+            }
         }
-    }
+    /* Decrementation id
         for(i=compt+1;i>=0;i--){
             TG[i].id--;
         }
+        */
 
     if(trouve){
     printf("le livre a ete supprime avec sucsess.\n");
@@ -151,7 +153,6 @@ void Suppressionlivre(){
     
 }
 
-
 void AffichageStock(){
 
     int stock=0;
@@ -159,11 +160,7 @@ void AffichageStock(){
     for(i=0;i<compt;i++){
         stock+=TG[i].quantite;
     }
-    printf("la quantite total de livre qui en biblio est: %d livres.",stock);
+    printf("\nla quantite total de livre qui en biblio est: %d livres.",stock);
     printf("\n");
 
 }
-
-
-
-    
