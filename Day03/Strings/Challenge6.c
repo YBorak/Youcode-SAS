@@ -6,12 +6,6 @@ int main() {
     int i, nr=0; // nombre de repetition
     char str[20];
     char c; //caractere
-    int len = strlen(str);
-/*
-    char tmpstr[2];
-    tmpstr[0] = c;
-    tmpstr[1] = '\0';
-*/
 
     printf("Entrer la valeur de caractere: ");
     scanf("%c", &c);
